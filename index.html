@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dustin Fichmann — Terminal Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0b0f14;--panel:#0f1720;--muted:#9aa6b2;--accent:#7be4ff;--accent-2:#9dffb8;--radius:12px;--mono:'JetBrains Mono',ui-monospace,monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;--maxwidth:1100px;}
+    html,body{margin:0;height:100%;background:linear-gradient(180deg,var(--bg),#071018);color:#dbe9f2;font-family:var(--sans);}
+    a{color:var(--accent);text-decoration:none;} a:hover{text-decoration:underline;}
+    .wrap{max-width:var(--maxwidth);margin:28px auto;padding:20px;display:grid;grid-template-columns:1fr 360px;gap:24px;}
+    header.shell{grid-column:1/-1;display:flex;align-items:center;gap:16px;padding:10px 14px;background:rgba(255,255,255,0.02);border-radius:12px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 8px 30px rgba(0,0,0,0.6);}
+    .prompt{font-family:var(--mono);font-size:0.95rem;padding:8px 10px;border-radius:8px;border:1px solid rgba(123,228,255,0.06);background:rgba(123,228,255,0.02);display:flex;gap:6px;align-items:center;white-space:nowrap;}
+    .prompt a{color:var(--accent-2);text-decoration:none;} .prompt a:hover{text-shadow:0 0 6px var(--accent-2);}
+    .panel{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);border-radius:12px;padding:18px;box-shadow:0 10px 25px rgba(0,0,0,0.5);}
+    .terminal{font-family:var(--mono);font-size:0.95rem;color:#cfeffb;line-height:1.55;background:rgba(0,0,0,0.15);border-radius:10px;border:1px solid rgba(255,255,255,0.02);padding:18px;box-shadow:inset 0 -25px 35px rgba(0,0,0,0.35);}
+    .cmd{display:flex;gap:10px;margin-bottom:12px;} .bl{width:8px;height:8px;border-radius:2px;background:var(--accent);box-shadow:0 0 8px var(--accent);margin-top:6px;}
+    .bio{font-family:var(--sans);color:#eaf6ff;font-size:1.02rem;} .bio a{color:var(--accent-2);}
+    .section-title{font-family:var(--mono);color:var(--accent);margin:16px 0 8px;font-weight:600;} .item{margin-bottom:14px;} .item .title{font-weight:700;color:#fff;} .meta{color:#9aa6b2;font-size:0.92rem;margin-top:6px;}
+    .codebox{background:#061019;border:1px solid rgba(123,228,255,0.03);padding:10px;border-radius:8px;display:flex;justify-content:space-between;align-items:center;margin-top:8px;font-family:var(--mono);}
+    .kbd{padding:6px 8px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.02);border-radius:6px;color:var(--accent);font-family:var(--mono);}
+    .profile{display:flex;flex-direction:column;gap:14px;} .avatar img{width:100%;border-radius:12px;}
+    .card-mini{background:rgba(255,255,255,0.02);border-radius:10px;padding:14px;border:1px solid rgba(255,255,255,0.02);}
+    .hobbies{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;} .hobby{font-family:var(--mono);padding:6px 8px;border-radius:6px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.02);cursor:pointer;color:var(--accent-2);}
+    footer{text-align:center;color:#9aa6b2;margin-top:10px;font-size:0.86rem;}
+    .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:none;align-items:center;justify-content:center;z-index:9999;padding:16px;}
+    .modal-card{background:#071019;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.05);max-width:760px;width:100%;} .modal-card img{width:100%;border-radius:8px;}
+    @media(max-width:960px){.wrap{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header class="shell">
+    <div class="prompt">
+      <a href="mailto:dfichmann@fas.harvard.edu">dfichmann@fas.harvard.edu</a><span style="opacity:.6">:</span><span style="color:#9aa6b2">~</span><span style="margin-left:10px;color:#9aa6b2">— Predoctoral Research Fellow</span>
+    </div>
+    <div style="margin-left:auto;display:flex;gap:12px;align-items:center;font-family:var(--mono);">
+      <a class="smalllink" href="assets/CV_Dustin_Fichmann.pdf" target="_blank">CV</a>
+      <a class="smalllink" href="https://www.economics.harvard.edu/people/dustin-fichmann" target="_blank">Harvard</a>
+    </div>
+  </header>
+  <main class="panel">
+    <div class="terminal">
+      <div class="cmd">
+        <span class="bl"></span>
+        <div>
+          <div style="font-size:0.86rem;color:#9aa6b2">$ cat about.md</div>
+          <div class="bio" style="margin-top:6px">
+            Hi! Welcome — I'm <strong style="color:#fff">Dustin Fichmann</strong>, a Predoctoral Research Fellow with 
+            <a href="https://rabin.scholars.harvard.edu" target="_blank">Matthew Rabin</a> in Harvard's Department of Economics. My interests lie in <strong>behavioral economics</strong> and <strong>political economy</strong>, especially <strong>belief updating, algorithm neglect, and polarization</strong>.
+            <br><br>
+            I completed an M.A. in Economics at Columbia and a B.A. in Mathematics & Economics at Bates (summa&nbsp;cum&nbsp;laude; Phi Beta Kappa). I studied as a visiting student at the University of Oxford. During my M.A., I worked as an RA for 
+            <a href="https://econ.columbia.edu/econpeople/brendan-oflaherty/" target="_blank">Brendan O’Flaherty</a>, where I used causal forests to estimate racial disparities in police killings of civilians. I later did a one-year predoc at HBS with 
+            <a href="https://www.econ.uzh.ch/en/people/faculty/graeber.html" target="_blank">Thomas Graeber</a>, where I worked with 
+            <a href="https://sites.google.com/site/chrisrotheconomics/home" target="_blank">Chris Roth</a>, 
+            <a href="https://marcosammon.com" target="_blank">Marco Sammon</a>, and 
+            <a href="https://benjamin-enke.com" target="_blank">Benjamin Enke</a> on designing behavioral experiments.
+            <br><br>
+            Outside of research I love 
+            <a class="fun-link" data-img="images/freedive.jpg">free diving for lobsters</a>, 
+            <a class="fun-link" data-img="images/ski.jpg">skiing</a>, 
+            <a class="fun-link" data-img="images/mountainbiking.jpg">mountainbiking</a>, 
+            and 
+            <a class="fun-link" data-img="images/coffee.jpg">coffee</a>.
+            &nbsp;&nbsp;<a href="assets/CV_Dustin_Fichmann.pdf" target="_blank" style="color:var(--accent)">[CV]</a>
+          </div>
+        </div>
+      </div>
+      <div class="section-title">Selected Work</div>
+      <div class="item">
+        <div class="title">Perceptions of Crime and the Gender Commuting Gap</div>
+        <div class="meta">M.A. thesis, Columbia University (2022).</div>
+        <div class="codebox"><span class="kbd">thesis.pdf</span><a class="smalllink" href="assets/Perceptions_of_Crime_Gender_Commuting_Gap_MA_Thesis.pdf" target="_blank">open</a></div>
+      </div>
+      <div class="item">
+        <div class="title">EBRD — Availability & Prices</div>
+        <div class="meta">Decisions under availability & price uncertainty.</div>
+        <div class="codebox"><span class="kbd">demo.shiny()</span><span><a class="smalllink" href="https://dustin-fichmann.shinyapps.io/lori-2price-shiny-app/" target="_blank">open demo</a> · <a class="smalllink" href="https://github.com/dustinfichmann/lori/tree/main/lori-2price-shiny-app" target="_blank">code</a></span></div>
+      </div>
+      <div class="item">
+        <div class="title">EBRD — Insurance</div>
+        <div class="meta">Insurance choices when availability and health are uncertain.</div>
+        <div class="codebox"><span class="kbd">demo.shiny()</span><span><a class="smalllink" href="https://dustin-fichmann.shinyapps.io/lori-insurance-shiny-app/" target="_blank">open demo</a> · <a class="smalllink" href="https://github.com/dustinfichmann/lori/tree/main/lori-insurance-shiny-app" target="_blank">code</a></span></div>
+      </div>
+      <div class="section-title">Honorable mentions — assisted with</div>
+        <ul class="item meta" style="margin-left:16px; line-height:1.55;">
+          <li>
+            Graeber, Thomas; Roth, Christopher; and Sammon, Marco.
+            “<a href="https://ssrn.com/abstract=5380190" target="_blank">Coarse Categories in a Complex World</a>.”
+            <em>CESifo Working Paper No. 12032</em>, July 2025.
+          </li>
+
+          <li style="margin-top:10px;">
+            Gabaix, Xavier and Thomas Graeber.
+            “<a href="https://www.nber.org/papers/w33109" target="_blank">The Complexity of Economic Decisions</a>.”
+            <em>NBER Working Paper No. 33109</em>, November 2024.
+          </li>
+
+          <li style="margin-top:10px;">
+            Ongoing project with Benjamin Enke on cognitive reference dependence that analyzes
+            when people exhibit comparison versus contrast effects.
+          </li>
+
+          <li style="margin-top:10px;">
+            Ongoing project using LLM agents to estimate conversion metrics for digital assets.
+          </li>
+        </ul>
+    </div>
+  </main>
+  <aside class="profile">
+    <div class="avatar panel"><img src="images/profile.jpg" alt="Portrait of Dustin Fichmann"></div>
+    <div class="card-mini panel">
+      <div style="font-family:var(--mono);font-weight:700;color:var(--accent)">Contact</div>
+      <div style="margin-top:8px;color:var(--muted)"><strong>Email:</strong> <a href="mailto:dfichmann@fas.harvard.edu">dfichmann@fas.harvard.edu</a></div>
+      <div style="margin-top:8px;color:var(--muted)"><strong>Affiliation:</strong> Harvard Dept. of Economics</div>
+      <div style="margin-top:10px;display:flex;gap:8px"><a class="smalllink" href="https://github.com/dustinfichmann" target="_blank">GitHub</a><a class="smalllink" href="https://www.economics.harvard.edu/people/dustin-fichmann" target="_blank">Harvard</a></div>
+    </div>
+    <div class="card-mini panel">
+      <div style="font-family:var(--mono);font-weight:700;color:var(--accent)">Hobbies</div>
+      <div class="hobbies">
+        <div class="hobby fun-link" data-img="images/freedive.jpg">🦞 freediving</div>
+        <div class="hobby fun-link" data-img="images/ski.jpg">🎿 skiing</div>
+        <div class="hobby fun-link" data-img="images/mountainbiking.jpg">🚵 mountainbiking</div>
+        <div class="hobby fun-link" data-img="images/coffee.jpg">☕ coffee</div>
+      </div>
+    </div>
+    <div class="card-mini panel">
+      <div style="font-family:var(--mono);font-weight:700;color:var(--accent)">Quick links</div>
+      <div style="margin-top:8px;display:flex;flex-direction:column;gap:6px">
+        <a class="smalllink" href="assets/CV_Dustin_Fichmann.pdf" target="_blank">CV</a>
+        <a class="smalllink" href="assets/Perceptions_of_Crime_Gender_Commuting_Gap_MA_Thesis.pdf" target="_blank">Thesis</a>
+        <a class="smalllink" href="https://dustin-fichmann.shinyapps.io/lori-2price-shiny-app/" target="_blank">EBRD — Availability demo</a>
+        <a class="smalllink" href="https://dustin-fichmann.shinyapps.io/lori-insurance-shiny-app/" target="_blank">EBRD — Insurance demo</a>
+      </div>
+    </div>
+  </aside>
+  <footer>Last updated Dec. 2025</footer>
+</div>
+<div class="modal-backdrop" id="modal" aria-hidden="true"><div class="modal-card"><img id="modalImg" src="" alt="hobby image"></div></div>
+<script>
+(function(){
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modalImg');
+  document.querySelectorAll('.fun-link').forEach(btn=>{
+    btn.addEventListener('click', e=>{
+      e.preventDefault();
+      modalImg.src = btn.dataset.img;
+      modal.style.display='flex';
+      modal.setAttribute('aria-hidden','false');
+      document.body.style.overflow='hidden';
+    });
+  });
+  modal.addEventListener('click', e=>{ if(e.target===modal){ modal.style.display='none'; modalImg.src=''; modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }});
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape'){ modal.style.display='none'; modalImg.src=''; modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }});
+})();
+</script>
+</body>
+</html>
