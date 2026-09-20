@@ -1,0 +1,26 @@
+# Keep search engines and user-requested lookups welcome.
+# Specific training/data-collection opt-outs below override this default.
+User-agent: *
+Allow: /
+
+# Google: Gemini training and specified grounding uses, not Google Search.
+User-agent: Google-Extended
+Disallow: /
+
+# OpenAI training; OAI-SearchBot and ChatGPT-User remain allowed.
+User-agent: GPTBot
+Disallow: /
+
+# Anthropic training; Claude-SearchBot and Claude-User remain allowed.
+User-agent: ClaudeBot
+Disallow: /
+
+# Apple generative-model training; ordinary Applebot remains allowed.
+User-agent: Applebot-Extended
+Disallow: /
+
+# Common Crawl's public corpus, which can be used for model training.
+User-agent: CCBot
+Disallow: /
+
+Sitemap: https://dustinfichmann.com/sitemap.xml

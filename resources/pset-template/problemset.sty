@@ -1,0 +1,140 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{problemset}[2026/08/09 Generic problem-set style]
+
+% Typography and mathematics
+\RequirePackage[T1]{fontenc}
+\RequirePackage{lmodern}
+\RequirePackage{microtype}
+\RequirePackage{mathtools}
+\RequirePackage{amsthm}
+\RequirePackage{amssymb}
+
+% Page design and document structure
+\RequirePackage[margin=1in,headheight=14pt]{geometry}
+\RequirePackage[dvipsnames]{xcolor}
+\RequirePackage{mdframed}
+\RequirePackage[shortlabels]{enumitem}
+\RequirePackage{fancyhdr}
+\RequirePackage{graphicx}
+\RequirePackage{booktabs}
+\RequirePackage{hyperref}
+
+% Restrained palette that remains distinct in grayscale.
+\definecolor{psaccent}{HTML}{294A63}
+\definecolor{psborder}{HTML}{71818C}
+\definecolor{psfill}{HTML}{F3F5F6}
+\definecolor{psquiet}{HTML}{59636A}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=psaccent,
+  citecolor=psaccent,
+  urlcolor=psaccent,
+  pdfborder={0 0 0}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em plus 0.15em minus 0.1em}
+\setlist{topsep=0.45em,itemsep=0.25em,parsep=0pt}
+\setlist[enumerate,1]{label=(\alph*),leftmargin=2em}
+\setlist[enumerate,2]{label=(\roman*),leftmargin=2em}
+
+% All assignment metadata is defined in metadata.tex.
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\authorname}
+\fancyhead[C]{\small Problem Set \problemsetnumber}
+\fancyhead[R]{\small\assignmentdate}
+\fancyfoot[R]{\small\color{psquiet}\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\AtBeginDocument{%
+  \hypersetup{pdfauthor={\authorname},pdftitle={Problem Set \problemsetnumber}}%
+}
+
+% Automatic, referenceable problem numbers with an optional descriptive title.
+\newcounter{problem}
+\renewcommand{\theproblem}{\arabic{problem}}
+\NewDocumentEnvironment{problem}{o}{%
+  \refstepcounter{problem}
+  \begin{mdframed}[
+    needspace=14\baselineskip,
+    backgroundcolor=psfill,
+    linecolor=psborder,
+    linewidth=0.7pt,
+    roundcorner=2pt,
+    skipabove=1.2em,
+    skipbelow=0.9em,
+    innerleftmargin=13pt,
+    innerrightmargin=13pt,
+    innertopmargin=11pt,
+    innerbottommargin=11pt,
+    splittopskip=11pt,
+    splitbottomskip=11pt
+  ]
+  {\large\bfseries\color{psaccent}Problem \theproblem%
+    \IfValueT{#1}{\enspace\textnormal{\textcolor{psquiet}{#1}}}%
+  }\par\nobreak\smallskip
+}{%
+  \end{mdframed}
+}
+
+% Part questions alternate with solutions; lettering restarts each problem.
+\newcounter{problempart}[problem]
+\renewcommand{\theproblempart}{\alph{problempart}}
+\NewDocumentEnvironment{problempart}{}{%
+  \refstepcounter{problempart}%
+  \begin{mdframed}[
+    needspace=5\baselineskip,
+    backgroundcolor=psfill,
+    linecolor=psborder,
+    linewidth=0.7pt,
+    roundcorner=2pt,
+    skipabove=0.8em,
+    skipbelow=0.4em,
+    innerleftmargin=13pt,
+    innerrightmargin=13pt,
+    innertopmargin=8pt,
+    innerbottommargin=8pt
+  ]
+  \textbf{\color{psaccent}(\theproblempart)}\enspace\ignorespaces
+}{%
+  \end{mdframed}
+}
+
+% Solutions are deliberately quieter than problem statements.
+\NewDocumentEnvironment{solution}{}{%
+  \par\addvspace{0.7em}
+  \noindent{\bfseries\color{psaccent}Solution.}\par\nobreak\smallskip
+}{%
+  \par\addvspace{1.1em}
+}
+
+% Standard theorem structures for proof-oriented coursework.
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% Conservative mathematical shortcuts.
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+\endinput

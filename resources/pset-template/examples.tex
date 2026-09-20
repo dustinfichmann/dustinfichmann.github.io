@@ -1,0 +1,76 @@
+% Optional formatting reference; not included in main.tex.
+\documentclass[11pt]{article}
+\usepackage{problemset}
+\input{metadata}
+
+\begin{document}
+\begin{problem}[Lists and mathematics]\label{prob:example}
+Let \(x\in\R\).
+\begin{enumerate}
+  \item Verify the following identity.
+  \begin{enumerate}
+    \item Expand the square.
+    \item Collect terms.
+  \end{enumerate}
+  \item Explain why \(x^2\geq 0\).
+\end{enumerate}
+\[
+  (x+1)^2=x^2+2x+1.
+\]
+\end{problem}
+
+\begin{solution}
+\begin{proof}
+By the distributive law,
+\begin{align}
+  (x+1)^2 &= (x+1)(x+1) \\
+          &= x^2+2x+1.
+\end{align}
+If \(x\geq0\), the product \(x\cdot x\) is nonnegative.
+If \(x<0\), then \(-x>0\) and \(x^2=(-x)^2>0\).
+\end{proof}
+\end{solution}
+
+\begin{problem}[Long statements and page breaks]
+This deliberately long placeholder illustrates a statement that can continue
+across pages. Replace it with your own question. The box follows the text
+automatically; no fixed height or manual page break is needed.
+
+\newcount\exampleparagraph
+\exampleparagraph=0
+\loop
+  \advance\exampleparagraph by 1
+  This is placeholder paragraph \the\exampleparagraph. A longer question may
+  introduce notation, list assumptions, describe a procedure, and specify
+  what the solution should establish. Keep these instructions in ordinary
+  paragraphs so the statement can break naturally across pages. Separate
+  assumptions from the requested conclusion and define symbols before using
+  them. This text demonstrates layout only and contains no assignment content.
+  \par
+\ifnum\exampleparagraph<9
+\repeat
+\end{problem}
+
+\begin{solution}
+Write your explanation here. Refer to earlier questions with
+\verb|\ref|, for example Problem~\ref{prob:example}.
+
+\begin{figure}[htbp]
+  \centering
+  \fbox{\parbox[c][1in][c]{0.75\linewidth}{\centering Figure placeholder}}
+  \caption{Replace the box with your own graphic using \texttt{\string\includegraphics}.}
+\end{figure}
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{@{}ll@{}}
+    \toprule
+    Item & Description \\
+    \midrule
+    Placeholder & Replace with your own content \\
+    \bottomrule
+  \end{tabular}
+  \caption{Table placeholder; no numerical results are supplied.}
+\end{table}
+\end{solution}
+\end{document}
